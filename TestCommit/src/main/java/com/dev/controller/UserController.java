@@ -1,6 +1,7 @@
 package com.dev.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,5 +19,14 @@ public class UserController {
 	public @ResponseBody Iterable<UserPro> getAllUsers() {
 		return userrepo.findAll();
 	}
+
+	@RequestMapping(value = "/getbyid/{id}")
+	@ResponseBody
+	public UserPro getuserByemail(@PathVariable int id) {
+		UserPro user = userrepo.findById(id);
+		return user;
+	}
+
+	
 
 }

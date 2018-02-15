@@ -2,33 +2,33 @@ package com.dev.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "userpro")
+@Table(name = "userp")
 public class UserPro {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	int id;
 	@Column(name = "name")
 	String name;
-	@Id
 	@Column(name = "email")
 	String email;
-	@Column(name = "age")
-	int age;
 	@Column(name = "city")
 	String city;
-	@Column(name = "file")
-	byte[] file;
 
 	public UserPro() {
 	}
 
-	public UserPro(String name, String email, int age, String city, byte[] file) {
+	public UserPro(int id, String name, String email, String city) {
 		this.name = name;
 		this.email = email;
-		this.age = age;
+		this.id = id;
 		this.city = city;
-		this.file = file;
 	}
 
 	public String getName() {
@@ -47,12 +47,12 @@ public class UserPro {
 		this.email = email;
 	}
 
-	public int getAge() {
-		return age;
+	public int getId() {
+		return id;
 	}
 
-	public void setAge(int age) {
-		this.age = age;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getCity() {
@@ -61,14 +61,6 @@ public class UserPro {
 
 	public void setCity(String city) {
 		this.city = city;
-	}
-
-	public byte[] getFile() {
-		return file;
-	}
-
-	public void setFile(byte[] file) {
-		this.file = file;
 	}
 
 }
