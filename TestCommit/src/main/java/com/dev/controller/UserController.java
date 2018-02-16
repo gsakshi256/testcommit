@@ -2,6 +2,7 @@ package com.dev.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,6 +28,17 @@ public class UserController {
 		return user;
 	}
 
-	
+	@RequestMapping(value = "/updateuser")
+	public UserPro updateUser(@RequestBody UserPro userpro) {
+		UserPro user = userrepo.findById(userpro.getId());
+		if (user != null) {
+			user.setName(userpro.getName());
+			user.setEmail(userpro.getEmail());
+			user.setCity(userpro.getCity());
+			user.setRole(userpro.getRole());
+
+		}
+		return user;
+	}
 
 }

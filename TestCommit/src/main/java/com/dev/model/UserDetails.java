@@ -2,36 +2,30 @@ package com.dev.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "userp")
-public class UserPro {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
-	int id;
+@Table(name = "userdetails")
+public class UserDetails {
 	@Column(name = "name")
 	String name;
+	@Id
 	@Column(name = "email")
 	String email;
 	@Column(name = "city")
 	String city;
-	@Column(name = "role")
-	String role;
+	@Column(name = "file")
+	byte[] file;
 
-	public UserPro() {
+	public UserDetails() {
 	}
 
-	public UserPro(int id, String name, String email, String city, String role) {
+	public UserDetails(String name, String email, String city, byte[] file) {
 		this.name = name;
 		this.email = email;
-		this.id = id;
 		this.city = city;
-		this.role = role;
+		this.file = file;
 	}
 
 	public String getName() {
@@ -50,14 +44,6 @@ public class UserPro {
 		this.email = email;
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	public String getCity() {
 		return city;
 	}
@@ -66,12 +52,12 @@ public class UserPro {
 		this.city = city;
 	}
 
-	public String getRole() {
-		return role;
+	public byte[] getFile() {
+		return file;
 	}
 
-	public void setRole(String role) {
-		this.role = role;
+	public void setFile(byte[] file) {
+		this.file = file;
 	}
 
 }
